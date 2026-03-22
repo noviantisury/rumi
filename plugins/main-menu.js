@@ -178,7 +178,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
       cooldown.set(m.sender, Date.now())
       await conn.sendFile(
         m.chat,
-        'https://files.catbox.moe/4jo6p7.mp3',
+        'http://elainaacdn.vercel.app/file/8297122359.bin',
         'menu.mp3',
         null,
         m,
