@@ -2,8 +2,8 @@ import { watchFile, unwatchFile } from 'fs';
 import chalk from 'chalk';
 import { fileURLToPath } from 'url';
 
-global.pairingNumber = 628152313006;
-global.owner = [['628152313006', 'Kayzen Izumi', true]]
+global.pairingNumber = 6285763571655;
+global.owner = [['6285763571655', 'Kayzen Izumi', true]]
 global.mods = [];
 
 global.namebot = 'Kururmi';
