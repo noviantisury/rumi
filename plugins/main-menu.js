@@ -176,15 +176,6 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
     let last = cooldown.get(m.sender) || 0
     if (Date.now() - last > 60_000) {
       cooldown.set(m.sender, Date.now())
-      await conn.sendFile(
-        m.chat,
-        'http://elainaacdn.vercel.app/file/8297122359.bin',
-        'menu.mp3',
-        null,
-        m,
-        true,
-        { type: 'audioMessage', ptt: true }
-      )
     }
 
   } catch (e) {
