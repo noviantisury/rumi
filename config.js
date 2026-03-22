@@ -1,9 +1,6 @@
-import {  watchFile, unwatchFile, glob } from 'fs';
+import { watchFile, unwatchFile } from 'fs';
 import chalk from 'chalk';
 import { fileURLToPath } from 'url';
-import { join } from 'node:path';
-import { Worker } from 'node:worker_threads';
-import { running, __dirname, worker, restartTimer, restart, rl } from '.';
 
 global.pairingNumber = 628152313006;
 global.owner = [['628152313006', 'Kayzen Izumi', true]]
@@ -82,62 +79,4 @@ watchFile(file, () => {
 	unwatchFile(file);
 	console.log(chalk.redBright("Update 'config.js'"));
 	import(`${file}?update=${Date.now()}`);
-});export function start(file) {
-    if (running) return;
-    running = true;
-    const full = join(__dirname, file);
-
-    if (worker) worker.terminate();
-    worker = new Worker(full);
-    if (restartTimer) {
-        clearTimeout(restartTimer);
-        restartTimer = null;
-    }
-
-    worker.on('message', (msg) => {
-        console.log('[MESSAGE]', msg);
-
-        if (msg === 'restart' || msg === 'reset') {
-            restart();
-        }
-    });
-
-    worker.on('exit', (code) => {
-        console.log('❗ Worker exited with code', code);
-        running = false;
-        if (code !== 0) {
-            restartTimer = setTimeout(
-                () => {
-                    console.log('⏳ Auto restart...');
-                    restart();
-                },
-                30 * 60 * 1000
-            );
-        }
-        watchFile(full, () => {
-            unwatchFile(full);
-            console.log('♻️ File updated → Restarting...');
-            start(file);
-        });
-    });
-
-    if (!rl.listenerCount('line')) {
-        rl.on('line', (line) => {
-            const cmd = line.trim().toLowerCase();
-            if (!cmd) return;
-
-            if (cmd === 'exit') {
-                console.log('⛔ Exiting...');
-                worker?.terminate();
-                process.exit(0);
-            }
-            if (cmd === 'restart' || cmd === 'reset') {
-                console.log('🍃Restart...');
-                restart();
-            }
-
-            worker?.postMessage(cmd);
-        });
-    }
-}
-
+});
