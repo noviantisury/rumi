@@ -25,7 +25,7 @@
   <a href="https://github.com/itskayzenn/kurumi-MD/fork">
     <img src="https://img.shields.io/badge/🍴_Fork-darkblue?style=for-the-badge"/>
   </a>
-  <a href="https://whatsapp.com/channel/0029VbAYjQgKrWQulDTYcg2K">
+  <a href="https://whatsapp.com/channel/0029Vb7904VBvvslkfdjPi0P">
     <img src="https://img.shields.io/badge/💬_WhatsApp_Channel-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/>
   </a>
 </p>
